@@ -40,11 +40,11 @@ Follow the naming convention of <\partner 1 initials>-<\partner 2 initials>-book
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-02-22-2021 00:00pm - 
-02-22-2021 00:00pm - 
-02-22-2021 00:00pm - 
-02-22-2021 00:00pm - 
-02-22-2021 00:00pm - 
-02-22-2021 00:00pm - 
-02-22-2021 00:00pm - 
-02-22-2021 00:00pm - 
+02-22-2021 02:46pm - 00:00pm: Card 1
+02-22-2021 00:00pm - 00:00pm:
+02-22-2021 00:00pm - 00:00pm:
+02-22-2021 00:00pm - 00:00pm:
+02-22-2021 00:00pm - 00:00pm:
+02-22-2021 00:00pm - 00:00pm:
+02-22-2021 00:00pm - 00:00pm:
+02-22-2021 00:00pm - 00:00pm:
