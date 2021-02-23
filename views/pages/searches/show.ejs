@@ -7,26 +7,28 @@
     <title>Books App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet"type="text/css" href="styles/base.css" />
   </head>
   <body>
-    <h1>Show</h1>
+    <h1>Results</h1>
       <nav>
-        <a href="/book-search">Book Search</a>
+        <a href="/new.ejs"></a>
       </nav>
 
-      <form action="/">
-        <fieldset>
-          <legend>
-            Search a Book!
-          </legend>
-          <label for="name">Title</label>
-          <input type="text" name="name" />
-          <label for="author">Author</label>
-          <input type="text" name="author" />
-          <input type="submit" />
-        </fieldset>
-      </form>
+      <ul>
+        <% for(let i = 0; i < titles.length; i++ ){ %>
+             <li>
+               <p><%= titles.titles %></p>
+             
+                         <!-- Add a form  -->
+                 <form action="save-book" method="POST"> 
+                   <!-- <input type="text" name="title" value=""> -->
+                   <input type="hidden" name="title" value="<%= titles[i]%>">
+                   <input type="submit" value="save-book">
+                 </form>
+             </li>
+             <%  } %>
+       </ul>
 
 
       
