@@ -2,12 +2,13 @@
 
 const express = require('express');
 const superagent = require('superagent');
-const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public')); // loads the public folder (css)
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); //tell express to load ejs this unlocks the response render
 app.use(express.urlencoded({extended: true}));
 
 app.get('/', getBooks);
