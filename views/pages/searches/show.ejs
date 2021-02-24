@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
   <head>
     <meta charset="utf-8">
@@ -14,18 +13,20 @@
       <nav>
         <a href="/new.ejs"></a>
       </nav>
-
       <ul>
-        <% titles.forEach(book =>{ %>
-             <li>
-               <p><%= book.title %></p>
-             
-                  
-             </li>
-             <%  }) %>
+        <% results.forEach(book => { %>
+     <li>
+            <h3>
+              <%= book.title %>
+            </h3>
+            <span>
+              <%= book.author %>
+            </span>
+            <p>
+              <%= book.description %>
+            </p>
+      </li>
+    <% }); %>
        </ul>
-
-
-      
   </body>
 </html>
