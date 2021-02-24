@@ -16,21 +16,18 @@ app.get('/searches/new', makeBookSearch);
 app.post('/searches', getResults);
 app.post('/save-book', saveBook);
 
-// Fail safe routes
+// ====== Fail safe routes ======
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 app.get((error, req, res) => handleError(error, res)); // handle errors
 
-
-
-
-
+// ====== Functions ======
 function getBooks(req, res){ //home page
   res.render('pages/index');
 }
+
 function makeBookSearch(req, res){ // search for book
   res.render('pages/searches/new.ejs');
 }
-
 
 function getResults(req, res){
   const title = req.body.title;
@@ -44,13 +41,13 @@ function getResults(req, res){
     }).catch(err => handleError(err, res));
 }
 
-
 function saveBook(req, res){
   savedBookTitles.push(req.body.title);
   res.redirect('/');
 }
 
-// Need Constructor function for titles | image, title, author, and desc
+
+// ====== Constructor Function ======
 function Book(bookObject){
   this.title = bookObject.title ? bookObject.title : 'Title not found';
   // this.img = bookObject.imageLinks || `https://i.imgur.com/J5LVHEL.jpg`;
@@ -82,11 +79,11 @@ function getResults(req, res){
 // }
 
 
+
+// ====== Error Handler(s) ======
 function handleError(error, response) {
   response.render('pages/error', { error: error});
 }
-
-
 
 // ====== PORT Listener ======
 app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
