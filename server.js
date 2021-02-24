@@ -82,10 +82,6 @@ function getResults(req, res){
 // }
 
 
-
-
-
-
 function handleError(error, response) {
   response.render('pages/error', { error: error});
 }
