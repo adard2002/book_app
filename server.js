@@ -69,8 +69,8 @@ function makeBookSearch(req, res){ // search for book
 function getResults(req, res){
   let url = `https://www.googleapis.com/books/v1/volumes?q=`;
   // console.log(req.body);
-  if(req.body.searchType === 'title'){ url += `+intitle:${req.body.searchBar}`;}
-  if(req.body.searchType[1] === 'author'){ url += `+inauthor:${req.body.searchType[0]}`;}
+  // if(req.body.searchType === 'title'){ url += `+intitle:${req.body.searchBar}`;}
+  // if(req.body.searchType[1] === 'author'){ url += `+inauthor:${req.body.searchType[0]}`;}
   superagent.get(url)
     .then(books => books.body.items.map(book => new Book(book.volumeInfo)))
     .then(results => res.render('pages/searches/show', {results: results}));
@@ -80,10 +80,6 @@ function getResults(req, res){
 //   console.log(req.body.title);
 //   res.redirect('/');
 // }
-
-
-
-
 
 
 function handleError(error, response) {
