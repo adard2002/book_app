@@ -1,13 +1,18 @@
 'use strict';
 const express = require('express');
 const superagent = require('superagent');
-const app = express();
+const pg = require('pg');
 require('dotenv').config();
+
+const app = express();
 const PORT = process.env.PORT || 3000;
 // const savedBookTitles = [];
 
 app.use(express.static('public')); // loads the public folder (css)
 app.use(express.urlencoded({ extended: true }));
+const client = new pg.Client(process.env.DATABASE_URL);
+
+client.on('error', err => console.error(err));
 
 app.set('view engine', 'ejs'); //tell express to load ejs this unlocks the response render
 
@@ -21,11 +26,18 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 app.get((error, req, res) => handleError(error, res)); // handle errors
 
 // ====== Functions ======
-function getBooks(req, res){ //home page
-  res.render('pages/index');
+function getBooks(req, res) { //home page
+  const sqlQuery = 'SELECT * FROM books';
+  return client.query(sqlQuery)
+    .then(resultBooks => {
+      res.send(resultBooks.rows);
+      console.log(resultBooks.rows);
+      // res.render('pages/index');
+    });
 }
 
-function makeBookSearch(req, res){ // search for book
+
+function makeBookSearch(req, res) { // search for book
   res.render('pages/searches/new.ejs');
 }
 
@@ -40,6 +52,7 @@ function Book(info) {
   this.title = info.title ? info.title : 'No title available';
   this.img_url = info.imageLinks ? info.imageLinks.thumbnail.replace(httpRegex, 'https://') : placeHolderImage;
   this.author = info.authors ? info.authors : 'No author available';
+  this.isbn = info.isbn ? info.isbn : 'No isbn available';
   this.description = info.description ? info.description : 'No description available';
 }
 
@@ -69,5 +82,9 @@ function handleError(error, response) {
 }
 
 // ====== PORT Listener ======
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+client.connect()
+  .then(() => {
+    app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+  });
+
 
