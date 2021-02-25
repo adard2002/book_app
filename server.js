@@ -16,20 +16,22 @@ app.get('/searches/new', makeBookSearch);
 app.post('/searches', getResults);
 // app.post('/save-book', saveBook);
 
-// Fail safe routes
+// ====== Fail safe routes ======
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 app.get((error, req, res) => handleError(error, res)); // handle errors
 
-
-function getBooks(req, res) { //home page
+// ====== Functions ======
+function getBooks(req, res){ //home page
   res.render('pages/index');
 }
-function makeBookSearch(req, res) { // search for book
+
+function makeBookSearch(req, res){ // search for book
   res.render('pages/searches/new.ejs');
 }
 
 
-// Constructor function for titles | image, title, author, and desc
+// ====== Constructor Function ======
+//for titles | image, title, author, and desc
 function Book(info) {
   const placeHolderImage = `https://i.imgur.com/J5LVHEL.jpg`;
 
@@ -40,8 +42,6 @@ function Book(info) {
   this.author = info.authors ? info.authors : 'No author available';
   this.description = info.description ? info.description : 'No description available';
 }
-
-
 
 function getResults(req, res) {
   let url = `https://www.googleapis.com/books/v1/volumes?q=`;
@@ -62,11 +62,11 @@ function getResults(req, res) {
 // }
 
 
+
+// ====== Error Handler(s) ======
 function handleError(error, response) {
   response.render('pages/error', { error: error });
 }
-
-
 
 // ====== PORT Listener ======
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
