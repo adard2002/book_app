@@ -29,27 +29,7 @@ function makeBookSearch(req, res) { // search for book
 }
 
 
-// function getResults(req, res) {
-//   const title = req.body.title;
-//   const url = `https://www.googleapis.com/books/v1/volumes`;
-
-//   superagent.get(url)
-//     .query({
-//       q: `+in${req.body.searchType}:${req.body.searchQuery}`
-//     })
-//     .then(books => {
-//       const titles = books.body.items.map(book => new Book(book.volumeInfo));
-//       res.render('pages/searches/show', { titles: titles });
-//       console.log(title);
-//     }).catch(err => handleError(err, res));
-// }
-
-
-// function saveBook(req, res) {
-//   savedBookTitles.push(req.body.title);
-//   res.redirect('/');
-// }
-// Need Constructor function for titles | image, title, author, and desc
+// Constructor function for titles | image, title, author, and desc
 function Book(info) {
   const placeHolderImage = `https://i.imgur.com/J5LVHEL.jpg`;
 
