@@ -56,7 +56,7 @@ function Book(info) {
   let httpRegex = /^(http:\/\/)/g;
 
   this.title = info.title ? info.title : 'No title available';
-  this.img_url = info.imageLinks ? info.imageLinks.smallThumbnail.replace(httpRegex, 'https://') : placeHolderImage;
+  this.img_url = info.imageLinks ? info.imageLinks.thumbnail.replace(httpRegex, 'https://') : placeHolderImage;
   this.author = info.authors ? info.authors : 'No author available';
   this.description = info.description ? info.description : 'No description available';
 }
