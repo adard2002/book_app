@@ -1,2 +1,2 @@
--- psql -d booksapp -f schema.sql
--- psql -d booksapp -f seed.sql
+-- psql -d book_app -f schema.sql
+-- psql -d book_app -f seed.sql
