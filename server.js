@@ -30,9 +30,8 @@ function getBooks(req, res) { //home page
   const sqlQuery = 'SELECT * FROM books';
   return client.query(sqlQuery)
     .then(resultBooks => {
-      res.send(resultBooks.rows);
       console.log(resultBooks.rows);
-      // res.render('pages/index');
+      res.render('pages/index', {books: resultBooks.rows});
     });
 }
 

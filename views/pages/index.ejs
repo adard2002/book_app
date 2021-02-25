@@ -15,7 +15,29 @@
         <a href="/">Home</a>
         <a href="/book-search">Search</a>
       </nav>
-
+      <ul>
+        <% books.forEach(books => { %>
+        <li>
+          <span>
+            <img src="<%= books.img_url %>">
+          </span>
+            <h3>
+              <%= books.title %>
+            </h3>
+            <span>
+              <%= books.author %>
+            </span>
+            <h4>
+              <%= books.isbn %>
+            </h2>
+            <p>
+              <%= books.description %>
+            </p>
+        </li>
+              <% }); %>
+      </ul>
+  </body>
+</html>
 
 
 
