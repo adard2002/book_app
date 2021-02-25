@@ -34,7 +34,7 @@ function makeBookSearch(req, res){ // search for book
 //for titles | image, title, author, and desc
 function Book(info) {
   const placeHolderImage = `https://i.imgur.com/J5LVHEL.jpg`;
-  
+
   let httpRegex = /^(http:\/\/)/g;
 
   this.title = info.title ? info.title : 'No title available';
