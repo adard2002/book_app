@@ -49,13 +49,16 @@ function makeBookSearch(req, res) { // search for book
 //   savedBookTitles.push(req.body.title);
 //   res.redirect('/');
 // }
-
 // Need Constructor function for titles | image, title, author, and desc
-function Book(bookObject) {
-  this.title = bookObject.title ? bookObject.title : 'Title not found';
-  // this.img = bookObject.imageLinks || `https://i.imgur.com/J5LVHEL.jpg`;
-  this.author = bookObject.authors || 'Author not found';
-  this.description = bookObject.description ? bookObject.description : 'No description provided';
+function Book(info) {
+  const placeHolderImage = `https://i.imgur.com/J5LVHEL.jpg`;
+
+  let httpRegex = /^(http:\/\/)/g;
+
+  this.title = info.title ? info.title : 'No title available';
+  this.img_url = info.imageLinks ? info.imageLinks.smallThumbnail.replace(httpRegex, 'https://') : placeHolderImage;
+  this.author = info.authors ? info.authors : 'No author available';
+  this.description = info.description ? info.description : 'No description available';
 }
 
 
