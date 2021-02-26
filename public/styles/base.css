@@ -1,3 +1,18 @@
 body {
   background-color: rgb(170, 170, 255);
 }
+
+h1 {
+  text-align: center;
+  background-color: rgb(110, 110, 255);
+  margin-bottom: 0;
+  padding-bottom: 15px;
+  text-shadow: blue 1px 2px 5px;
+}
+
+nav {
+  text-align: center;
+  background-color: rgb(110, 110, 255);
+  text-shadow: blue 1px 2px 5px;
+}
+
