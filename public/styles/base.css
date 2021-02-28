@@ -1,18 +1,44 @@
 body {
   background-color: rgb(170, 170, 255);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
+  font-family: 'Kite One', sans-serif;
   text-align: center;
   background-color: rgb(110, 110, 255);
   margin-bottom: 0;
   padding-bottom: 15px;
-  text-shadow: blue 1px 2px 5px;
+  text-shadow:blue 1px 2px 5px;
 }
 
 nav {
-  text-align: center;
   background-color: rgb(110, 110, 255);
-  text-shadow: blue 1px 2px 5px;
+  text-align: center;
+  /* text-shadow: blue 1px 2px 5px; */
 }
 
+ul{
+  text-align: center;
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+  display: inline-block;
+  display: justify-content;
+  color: aliceblue;
+}
+
+form{
+  display: center;
+  padding-top: 50px;
+}
+
+fieldset{
+  border-radius: 15%;
+  border-color: #6E6EFF;
+  border-width: 3px;
+  background-color: aliceblue;
+  height: 300px;
+  align-items: center;
+}
