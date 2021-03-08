@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Books App</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"type="text/css" href="styles/base.css" />
-  </head>
-  <body>
+<%- include('../layout/head.ejs'); %>
+  
+<body>
+    
     <h1>Show Results</h1>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/searches/new">Book Search</a>
-        <a href="/searches/show">Results</a>
-      </nav>
+    
+    <%- include('../layout/header.ejs'); %>
+
       <ul>
         <% results.forEach(book => { %>
         
