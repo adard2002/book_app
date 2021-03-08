@@ -6,7 +6,6 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const savedBookTitles = [];
 
 app.use(express.static('public')); // loads the public folder (css)
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +18,7 @@ app.set('view engine', 'ejs'); //tell express to load ejs this unlocks the respo
 app.get('/', getBooks);
 app.get('/searches/new', makeBookSearch);
 app.post('/searches', getResults);
-app.post('/save-book', saveBook);
+app.post('/books', saveBook);
 
 // ====== Fail safe routes ======
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -31,7 +30,7 @@ function getBooks(req, res) { //home page
   return client.query(sqlQuery)
     .then(resultBooks => {
       console.log(resultBooks.rows);
-      res.render('pages/index', {books: resultBooks.rows});
+      res.render('pages/index', { books: resultBooks.rows });
     });
 }
 
@@ -67,13 +66,22 @@ function getResults(req, res) {
   console.log(req.body);
 }
 
-function saveBook(req, res){
-  const sqlQuery = 
-  savedBookTitles.push(req.body.title);
-  console.log(req.body.title);
-  res.redirect('/');
+function saveBook(req, res) {
+  const { author, title, isbn, image_url, description } = req.body;
+  console.log('req.body', req.body);
+  const saveFavorite = `INSERT INTO books (author, title, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) RETURNING id;`;
+  const parameters = [author, title, isbn, image_url, description];
+  return client.query(saveFavorite, parameters)
+    .then(result => {
+      let id = result.rows[0].id;
+      console.log('id', id);
+      res.redirect(`/`);
+    })
+    .catch(err => {
+      handleError(err, res);
+      console.err('Error in saveBook', err);
+    });
 }
-
 
 
 // ====== Error Handler(s) ======
