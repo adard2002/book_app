@@ -21,11 +21,12 @@ nav {
 ul{
   text-align: center;
   list-style-type: none;
+  display: flex;
 }
 a{
   text-decoration: none;
-  display: inline-block;
-  display: justify-content;
+  justify-content: center;
+  padding-left: 20px;
   color: aliceblue;
 }
 
