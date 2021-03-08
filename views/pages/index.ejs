@@ -8,28 +8,31 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/styles/base.css" />
+    <link rel = "stylesheet" href="<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kite+One&display=swap" rel="stylesheet">"
   </head>
   <body>
-    <h1>Books</h1>
+    <h1>Virtual Bookshelf</h1>
       <nav>
         <a href="/">Home</a>
-        <a href="/searches/new">Search</a>
+        <a href="/searches/new">Book Search</a>
+        <a href="/searches/show">Results</a>
       </nav>
       <ul>
         <% books.forEach(books => { %>
-        <li>
+        <li id="details">
           <span>
             <img src="<%= books.image_url %>">
           </span>
             <h3>
               <%= books.title %>
             </h3>
-            <span>
-              <%= books.author %>
-            </span>
             <h4>
+              <%= books.author %>
+            </h4>
+            <h5>
               <%= books.isbn %>
-            </h2>
+            </h5>
             <p>
               <%= books.description %>
             </p>

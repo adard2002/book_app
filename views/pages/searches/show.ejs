@@ -10,10 +10,11 @@
   </head>
   <body>
     <h1>Show Results</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/searches/new">Search</a>
-    </nav>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/searches/new">Book Search</a>
+        <a href="/searches/show">Results</a>
+      </nav>
       <ul>
         <% results.forEach(book => { %>
         <li>
@@ -23,9 +24,9 @@
             <h3>
               <%= book.title %>
             </h3>
-            <span>
+            <h3>
               <%= book.author %>
-            </span>
+            </h3>
             <p>
               <%= book.description %>
             </p>
