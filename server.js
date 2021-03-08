@@ -18,7 +18,7 @@ app.set('view engine', 'ejs'); //tell express to load ejs this unlocks the respo
 
 app.get('/', getBooks);
 app.get('/searches/new', makeBookSearch);
-app.post('/searches', getResults);
+app.post('/searches/show', getResults);
 // app.post('/save-book', saveBook);
 
 // ====== Fail safe routes ======
