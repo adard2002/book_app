@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-// const savedBookTitles = [];
+const savedBookTitles = [];
 
 app.use(express.static('public')); // loads the public folder (css)
 app.use(express.urlencoded({ extended: true }));
@@ -18,8 +18,8 @@ app.set('view engine', 'ejs'); //tell express to load ejs this unlocks the respo
 
 app.get('/', getBooks);
 app.get('/searches/new', makeBookSearch);
-app.post('/searches/show', getResults);
-// app.post('/save-book', saveBook);
+app.post('/searches', getResults);
+app.post('/save-book', saveBook);
 
 // ====== Fail safe routes ======
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -67,11 +67,12 @@ function getResults(req, res) {
   console.log(req.body);
 }
 
-// function saveBook(req, res){
-//   savedBookTitles.push(req.body.title);
-//   console.log(req.body.title);
-//   res.redirect('/');
-// }
+function saveBook(req, res){
+  const sqlQuery = 
+  savedBookTitles.push(req.body.title);
+  console.log(req.body.title);
+  res.redirect('/');
+}
 
 
 
